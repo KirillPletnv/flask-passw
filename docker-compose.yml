@@ -1,0 +1,18 @@
+---
+version: "3"
+services:
+  flask:
+    image: flask-final
+    ports:
+      - 5000:5000
+  prometheus:
+    image: prom/prometheus
+    ports:
+      - 9090:9090    
+    volumes:
+      - C:\Users\kiril\Desktop\app-flask\prometheus.yml:/etc/prometheus/prometheus.yml
+      - dbdata:/var/lib/prometheus/data
+    depends_on:
+      - flask
+volumes:
+  dbdata:
